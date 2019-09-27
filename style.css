@@ -1,0 +1,45 @@
+/*.fill-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.mechanism {
+	display: flex;
+	align-content: center;
+}
+
+.fishing-rod {
+	width: 46px;
+	height: 352px;
+	position: relative;
+}
+
+.game-body {
+  width: 36px;
+  height: 350px;
+  position: relative;
+}
+
+.progress-bar {
+	width: 16px;
+	height: 334px;
+	position: relative;
+	overflow: hidden;
+}*/
+
+canvas {
+	border: 1px solid black;
+	border-radius: 3px;
+	background-color: 'purple';
+	margin: 0 auto;
+}
+
+div {
+	display: flex;
+	align-items: center;
+}
+
+h1 {
+	text-align: center;
+}
