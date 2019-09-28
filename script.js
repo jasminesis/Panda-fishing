@@ -39,28 +39,55 @@ c.fillRect(0, 0, 310, 400);
 
     var fish = new Image();
     fish.addEventListener('load', function() {
-        c.drawImage(fish, 82, 22, 36, 33)
+        c.drawImage(fish, 82, 370, 36, 33)
     })
     fish.src = "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/tropical-fish-icon.png"
 
-// animate fish
-var x = Math.random() * 40;
-var y = Math.random() * 390;
-var dx = (Math.random() - 0.5)*15;
-var dy = (Math.random() - 0.5)*15;
+// var y = 370;
+// var dy = -1;
 
+// var fish = new Fish(370, -1)
+
+// function Fish(y, dy) {
+//     this.y = y;
+//     this.dy = -dy;
+
+//     this.draw = function() {
+//         c.clearRect(82, this.y, 36, 33);
+//         c.drawImage(gameBody, 80, 20, 40, 390);
+//         c.beginPath();
+//         c.drawImage(fish, 81, this.y, 42, 36);
+//     }
+//     this.update = function() {
+//         if (this.y + 20 > 390 || this.y < 23) {
+//         this.dy = -this.dy;
+//     }
+//         this.y =+ this.dy;
+//         this.draw();
+//     }
+// }
+
+
+
+// function animate() {
+//     requestAnimationFrame(animate);
+//     console.log("blooop");
+//     fish.update();
+
+// }
+
+// animate();
 
 var y = 370;
 var dy = -1;
 
 function animate() {
     requestAnimationFrame(animate);
-    console.log("blooop");
+    console.log("bloooooooop");
     c.clearRect(82, y, 36, 33);
     c.drawImage(gameBody, 80, 20, 40, 390);
-    c.beginPath();
     c.drawImage(fish, 81, y, 42, 36);
-    y+= dy;
+    y += dy;
 
     if (y + 20 > 390 || y < 23) {
         dy = -dy;
