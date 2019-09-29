@@ -29,19 +29,20 @@ c.fillRect(0, 0, 310, 400);
     gameBody.addEventListener('load', function() {
         c.drawImage(gameBody, 80, 20, 40, 390)
     })
-    gameBody.src = "images/game-game-body-bg.svg"
+    gameBody.src = "images/game-game-body-bg.svg";
 
     var progressBar = new Image();
     progressBar.addEventListener('load', function() {
         c.drawImage(progressBar, 120, 30, 30, 370)
     })
-    progressBar.src = "images/game-progress-bar-bg.svg"
+    progressBar.src = "images/game-progress-bar-bg.svg";
 
     var fish = new Image();
     fish.addEventListener('load', function() {
         c.drawImage(fish, 82, 370, 36, 33)
     })
-    fish.src = "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/tropical-fish-icon.png"
+    fish.src = "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/tropical-fish-icon.png";
+
 
 // var y = 370;
 // var dy = -1;
@@ -78,20 +79,43 @@ c.fillRect(0, 0, 310, 400);
 
 // animate();
 
-var y = 370;
-var dy = -1;
 
-function animate() {
-    requestAnimationFrame(animate);
+var topBound = 20;
+var lowerBound = 400;
+var fishy = 370;
+var dfishy = -1;
+var glassy = 200;
+var dglassy = 2;
+
+function animateFish() {
+    requestAnimationFrame(animateFish);
     console.log("bloooooooop");
-    c.clearRect(82, y, 36, 33);
+    c.clearRect(82, fishy, 36, 33);
     c.drawImage(gameBody, 80, 20, 40, 390);
-    c.drawImage(fish, 81, y, 42, 36);
-    y += dy;
 
-    if (y + 20 > 390 || y < 23) {
-        dy = -dy;
+    c.fillStyle = 'rgba(43, 173, 121, 1)';
+    c.fillRect(81, glassy, 38, 60);
+    glassy += dglassy;
+    console.log("cubular")
+
+    if (glassy + 30 > 380 || glassy < 30) {
+        dglassy = -dglassy;
+    }
+
+    c.drawImage(fish, 81, fishy, 42, 36);
+
+    fishy += dfishy;
+
+    if (fishy + 20 > 390 || fishy < 23) {
+        dfishy = -dfishy;
     }
 }
+animateFish();
 
-animate();
+
+
+function animateGlass() {
+    requestAnimationFrame(animateGlass);
+    console.log('brr');
+    c.clear
+}
