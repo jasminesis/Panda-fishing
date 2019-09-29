@@ -37,6 +37,12 @@ c.fillRect(0, 0, 310, 400);
     })
     progressBar.src = "images/game-progress-bar-bg.svg";
 
+    var progressGradient = new Image();
+    progressGradient.addEventListener('load', function() {
+        c.drawImage(progressGradient, 120, 30, 30, 370)
+    })
+    progressGradient.src = "images/game-progress-gradient.svg";
+
     var fish = new Image();
     fish.addEventListener('load', function() {
         c.drawImage(fish, 82, 370, 36, 33)
@@ -93,7 +99,7 @@ function animateFish() {
     c.clearRect(82, fishy, 36, 33);
     c.drawImage(gameBody, 80, 20, 40, 390);
 
-    c.fillStyle = 'rgba(43, 173, 121, 1)';
+    c.fillStyle = '#3cc724';
     c.fillRect(81, glassy, 38, 60);
     glassy += dglassy;
     console.log("cubular")
