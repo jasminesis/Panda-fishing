@@ -1,5 +1,14 @@
 console.log("moo");
 
+var success = document.getElementById('nicecatch');;
+var failure = document.getElementById('gameover');;
+var nextButton = document.getElementById('nextButton');
+var startButton = document.getElementById('startButton');
+var level = 1;
+var clickCounter = 0;
+var splashSound = document.getElementById("splash");
+var startscreen = document.getElementById('startscreen')
+
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
 canvas.width = 700;
@@ -90,7 +99,7 @@ var topBound = 20;
 var lowerBound = 400;
 var fishy = 370;
 var dfishy = -1;
-var glassy = 200;
+var glassy = 30;
 var dglassy = 2;
 
 function animateFish() {
@@ -119,22 +128,50 @@ function animateFish() {
 }
 animateFish();
 
-
-
-// function animateGlass() {
-//     requestAnimationFrame(animateGlass);
-//     console.log('brr');
-// }
-
 window.addEventListener('keypress', detectCollision);
-var success = document.querySelector('img');
+nextButton.addEventListener('click', nextLevel)
+startButton.addEventListener('click', start)
 
 function detectCollision() {
     console.log("pressed");
+    clickCounter++;
     if ((fishy - 18 > glassy - 30) && (fishy < glassy + 30)) {
+        splashSound.play();
         success.classList.remove('hidden');
         success.classList.add('show');
         canvas.classList.remove('show');
         canvas.classList.add('hidden');
+        nextButton.classList.remove('hidden');
+        nextButton.classList.add('show');
     }
+    else if (clickCounter === 3) {
+        canvas.classList.remove('show');
+        canvas.classList.add('hidden');
+        failure.classList.remove('hidden');
+        failure.classList.add('show');
+    }
+}
+
+function nextLevel() {
+    level++;
+    clickCounter = 0;
+    success.classList.remove('show');
+    success.classList.add('hidden');
+    canvas.classList.remove('hidden');
+    canvas.classList.add('show');
+    nextButton.classList.remove('show');
+    nextButton.classList.add('hidden');
+    if (dglassy < 0) {
+        dglassy -= 2;
+    }
+    else {
+        dglassy += 2;
+    }
+}
+
+function start() {
+    startscreen.classList.remove('show');
+    startscreen.classList.add('hidden');
+    canvas.classList.remove('hidden');
+    canvas.classList.add('show');
 }

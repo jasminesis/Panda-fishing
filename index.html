@@ -7,10 +7,28 @@
 </head>
 <body>
     <h1>Panda goes fishing!</h1>
-    <div>
-    <canvas class="show"></canvas>
-    <img class="hidden" src="https://media.giphy.com/media/g6RrZiGoPMh6o/giphy.gif">
-</div>
+
+    <div id="startscreen" class = "show">
+        <img id="panda-image" src="images/panda-fishing.jpg">
+        <h2>Catch the fish by pressing any key when the fish is in the green glass.</br>
+        You get 3 tries on each level!</br>
+        Each level will get harder.</h2>
+        <button id="startButton">Start fishing!</button>
+    </div>
+
+
+    <div class="flex">
+        <button class="hidden" id="nextButton">Next level</button>
+    </div>
+
+    <canvas class="hidden"></canvas>
+
+    <img class="hidden" id="nicecatch" src="images/game-nice-catch.png">
+    <img class="hidden" id="gameover" src="images/gameover.jpg">
+
+<audio id = "splash">
+    <source src = "splash.mp3" type="audio/mpeg">
+</audio>
 
 
 <script type="text/javascript" src="script.js"></script>
