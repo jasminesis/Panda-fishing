@@ -95,14 +95,14 @@ var dglassy = 2;
 
 function animateFish() {
     requestAnimationFrame(animateFish);
-    console.log("bloooooooop");
+    // console.log(" bloooooooop");
     c.clearRect(82, fishy, 36, 33);
     c.drawImage(gameBody, 80, 20, 40, 390);
 
     c.fillStyle = '#3cc724';
     c.fillRect(81, glassy, 38, 60);
     glassy += dglassy;
-    console.log("cubular")
+    // console.log("cubular")
 
     if (glassy + 30 > 380 || glassy < 30) {
         dglassy = -dglassy;
@@ -115,13 +115,26 @@ function animateFish() {
     if (fishy + 20 > 390 || fishy < 23) {
         dfishy = -dfishy;
     }
+
 }
 animateFish();
 
 
 
-function animateGlass() {
-    requestAnimationFrame(animateGlass);
-    console.log('brr');
-    c.clear
+// function animateGlass() {
+//     requestAnimationFrame(animateGlass);
+//     console.log('brr');
+// }
+
+window.addEventListener('keypress', detectCollision);
+var success = document.querySelector('img');
+
+function detectCollision() {
+    console.log("pressed");
+    if ((fishy - 18 > glassy - 30) && (fishy < glassy + 30)) {
+        success.classList.remove('hidden');
+        success.classList.add('show');
+        canvas.classList.remove('show');
+        canvas.classList.add('hidden');
+    }
 }

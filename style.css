@@ -1,32 +1,3 @@
-/*.fill-container {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-.mechanism {
-	display: flex;
-	align-content: center;
-}
-
-.fishing-rod {
-	width: 46px;
-	height: 352px;
-	position: relative;
-}
-
-.game-body {
-  width: 36px;
-  height: 350px;
-  position: relative;
-}
-
-.progress-bar {
-	width: 16px;
-	height: 334px;
-	position: relative;
-	overflow: hidden;
-}*/
 
 canvas {
 	border: 1px solid black;
@@ -44,4 +15,16 @@ h1 {
 	text-align: center;
 	font-family: 'Indie Flower', cursive;
 
+}
+
+img {
+	margin: 0 auto;
+}
+
+.hidden {
+	display: none;
+}
+
+.show {
+	display: block;
 }
