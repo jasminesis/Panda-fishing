@@ -1,21 +1,24 @@
 console.log("moo");
 
-var success = document.getElementById('nicecatch');;
-var failure = document.getElementById('gameover');;
+var success = document.getElementById('nicecatch');
 var nextButton = document.getElementById('nextButton');
 var startButton = document.getElementById('startButton');
-var level = 1;
-var clickCounter = 0;
 var splashSound = document.getElementById("splash");
 var startscreen = document.getElementById('startscreen');
 var whichLevel = document.getElementById('whichLevel');
 var gameover = document.getElementById('gameover');
-
-
+var failure = document.getElementById('gameover');
 var canvas = document.querySelector('canvas');
+var timer = document.getElementById('timer');
+
 var c = canvas.getContext('2d');
+
+var stop = null;
+var level = 1;
 canvas.width = 700;
+var timeLeft = 10;
 canvas.height = 400;
+var clickCounter = 0;
 
 var grd = c.createLinearGradient(0, 0, 310, 400);
 grd.addColorStop(0, 'white');
@@ -62,41 +65,6 @@ c.fillRect(0, 0, 310, 400);
     fish.src = "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/tropical-fish-icon.png";
 
 
-// var y = 370;
-// var dy = -1;
-
-// var fish = new Fish(370, -1)
-
-// function Fish(y, dy) {
-//     this.y = y;
-//     this.dy = -dy;
-
-//     this.draw = function() {
-//         c.clearRect(82, this.y, 36, 33);
-//         c.drawImage(gameBody, 80, 20, 40, 390);
-//         c.beginPath();
-//         c.drawImage(fish, 81, this.y, 42, 36);
-//     }
-//     this.update = function() {
-//         if (this.y + 20 > 390 || this.y < 23) {
-//         this.dy = -this.dy;
-//     }
-//         this.y =+ this.dy;
-//         this.draw();
-//     }
-// }
-
-
-
-// function animate() {
-//     requestAnimationFrame(animate);
-//     console.log("blooop");
-//     fish.update();
-
-// }
-
-// animate();
-
 var fishy = 370;
 var dfishy = -1;
 var glassy = 30;
@@ -108,23 +76,21 @@ function animateFish() {
     c.clearRect(82, fishy, 36, 33);
     c.drawImage(gameBody, 80, 20, 40, 390);
 
+// draws glass
     c.fillStyle = '#55C504';
     c.fillRect(81, glassy, 38, 60);
     glassy += dglassy;
-    // console.log("cubular")
 
     if (glassy + 30 > 380 || glassy < 30) {
         dglassy = -dglassy;
     }
-
+// draws fish image
     c.drawImage(fish, 81, fishy, 42, 36);
-
     fishy += dfishy;
 
     if (fishy + 20 > 390 || fishy < 23) {
         dfishy = -dfishy;
     }
-
 }
 animateFish();
 
@@ -144,16 +110,16 @@ function detectCollision() {
         canvas.classList.add('hidden');
         nextButton.classList.remove('hidden');
         nextButton.classList.add('show');
+        clearInterval(stop);
     }
     else if (clickCounter === 3) {
-        canvas.classList.remove('show');
-        canvas.classList.add('hidden');
-        failure.classList.remove('hidden');
-        failure.classList.add('show');
+        gameIsOver();
     }
 }
 
 function nextLevel() {
+    clearInterval(stop);
+    startTimer();
     level++;
     whichLevel.textContent = level;
     clickCounter = 0;
@@ -171,7 +137,15 @@ function nextLevel() {
     }
 }
 
+function gameIsOver() {
+    canvas.classList.remove('show');
+    canvas.classList.add('hidden');
+    failure.classList.remove('hidden');
+    failure.classList.add('show');
+}
+
 function start() {
+    startTimer();
     startscreen.classList.remove('show');
     startscreen.classList.add('hidden');
     canvas.classList.remove('hidden');
@@ -180,4 +154,17 @@ function start() {
 
 function reload() {
     location.reload();
+}
+
+function startTimer() {
+    timeLeft = 10;
+    stop =setInterval(function() {
+        timeLeft--;
+        timer.textContent = timeLeft;
+
+        if (timeLeft === 0) {
+            clearInterval(stop);
+            gameIsOver();
+    }
+    }, 1000)
 }
