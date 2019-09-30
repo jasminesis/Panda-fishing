@@ -7,7 +7,10 @@ var startButton = document.getElementById('startButton');
 var level = 1;
 var clickCounter = 0;
 var splashSound = document.getElementById("splash");
-var startscreen = document.getElementById('startscreen')
+var startscreen = document.getElementById('startscreen');
+var whichLevel = document.getElementById('whichLevel');
+var gameover = document.getElementById('gameover');
+
 
 var canvas = document.querySelector('canvas');
 var c = canvas.getContext('2d');
@@ -94,9 +97,6 @@ c.fillRect(0, 0, 310, 400);
 
 // animate();
 
-
-var topBound = 20;
-var lowerBound = 400;
 var fishy = 370;
 var dfishy = -1;
 var glassy = 30;
@@ -108,7 +108,7 @@ function animateFish() {
     c.clearRect(82, fishy, 36, 33);
     c.drawImage(gameBody, 80, 20, 40, 390);
 
-    c.fillStyle = '#3cc724';
+    c.fillStyle = '#55C504';
     c.fillRect(81, glassy, 38, 60);
     glassy += dglassy;
     // console.log("cubular")
@@ -131,6 +131,7 @@ animateFish();
 window.addEventListener('keypress', detectCollision);
 nextButton.addEventListener('click', nextLevel)
 startButton.addEventListener('click', start)
+gameover.addEventListener('click', reload)
 
 function detectCollision() {
     console.log("pressed");
@@ -154,6 +155,7 @@ function detectCollision() {
 
 function nextLevel() {
     level++;
+    whichLevel.textContent = level;
     clickCounter = 0;
     success.classList.remove('show');
     success.classList.add('hidden');
@@ -174,4 +176,8 @@ function start() {
     startscreen.classList.add('hidden');
     canvas.classList.remove('hidden');
     canvas.classList.add('show');
+}
+
+function reload() {
+    location.reload();
 }

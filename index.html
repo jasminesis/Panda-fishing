@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Indie+Flower&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Panda goes fishing</title>
 </head>
 <body>
     <h1>Panda goes fishing!</h1>
+<span>Level : </span> <span id="whichLevel">1</span>
 
     <div id="startscreen" class = "show">
         <img id="panda-image" src="images/panda-fishing.jpg">
-        <h2>Catch the fish by pressing any key when the fish is in the green glass.</br>
-        You get 3 tries on each level!</br>
-        Each level will get harder.</h2>
-        <button id="startButton">Start fishing!</button>
+        <div id="flex-column">
+            <h2>Catch the fish by pressing any key when the fish is in the green glass.</br>
+            You get 3 tries on each level!</br>
+            Each level will get harder.</h2>
+            <button id="startButton">Start fishing!</button>
+        </div>
     </div>
 
 

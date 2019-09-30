@@ -45,7 +45,31 @@ img {
 	display: none;
 }
 
-#panda-image {
+#nicecatch {
+	margin-top: 40px;
+	height: 300px;
+}
+
+/*#panda-image {
 	width: 300px;
 	height: 300px;
+}*/
+
+#startButton {
+	margin: 0 auto;
+	width: 300px;
+	height: 30px;
+	border-radius: 5px;
+	font-family: 'Indie Flower', cursive;
+	font-size: 18px;
+}
+#flex-column {
+	display: flex;
+	flex-direction: column;
+}
+#startButton:hover {
+	border: 3px solid teal;
+}
+span {
+	font-size: 18px;
 }
