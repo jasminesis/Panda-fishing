@@ -1,4 +1,4 @@
-## Panda-fishing
+# Panda-fishing 
 
 # Instructions
 Catch the fish by pressing any key when the fish is in the green glass.
@@ -27,6 +27,8 @@ DOM manipulation was added to the window to trigger the next screen if the playe
 
 # Unsolved Problems
 
-[ ] Controlling the green glass of the game with a 'Flappy Bird' style movement
-[ ] Making the fish move randomly
-[ ] Creating a leaderboard
+* Controlling the green glass of the game with a 'Flappy Bird' style movement
+
+* Making the fish move randomly
+
+* Creating a leaderboard
