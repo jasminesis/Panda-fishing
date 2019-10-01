@@ -1,4 +1,4 @@
-## Panda-fishing ##
+# Panda-fishing 
 
 # Instructions
 Catch the fish by pressing any key when the fish is in the green glass.
