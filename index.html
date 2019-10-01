@@ -21,16 +21,15 @@
     <div id="startscreen" class = "show">
         <img id="panda-image" src="images/panda-fishing.jpg">
         <div id="flex-column">
-            <h2>Catch the fish by pressing any key when the fish is in the green glass.</br></br>
-            You get <span class="bold">10 seconds</span> and </br><span class="bold">3 tries</span> on each level!</br></br>
-            Each level will get harder.</h2>
+            <h2>Catch the fish by pressing the <span class="bold">SPACEBAR</span> when the fish is in the green glass.</br></br>
+            You get <span class="bold">10 seconds</span> and </br><span class="bold">3 tries</span> on each level!</h2>
             <button id="startButton">Start fishing! 🎣</button>
         </div>
     </div>
 
 
     <div class="flex">
-        <button class="hidden" id="nextButton">🐟 Next level 🐟</button>
+        <button class="hidden" id="nextButton">🐟 Press ENTER to continue 🐟</button>
     </div>
 
     <canvas class="hidden"></canvas>
@@ -39,11 +38,15 @@
     <img class="hidden" id="gameover" src="images/gameover.jpg">
 
 <audio id = "splash">
-    <source src = "splash.mp3" type="audio/mpeg">
+    <source src = "splash.m4a" type="audio/mpeg">
 </audio>
 
 <audio id = "happymusic">
     <source src = "happymusic.m4a" type="audio/mpeg">
+</audio>
+
+<audio id = "clickwrong">
+    <source src = "buzz.m4a" type="audio/mpeg">
 </audio>
 
 
