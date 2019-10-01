@@ -3,6 +3,7 @@ body {
 	text-align: center;
 	max-width: 700px;
 	margin: 0 auto;
+	background-color: #f4f5e9;
 
 }
 
@@ -30,6 +31,7 @@ h3 {
 	background: url("images/mute.png") center no-repeat;
 	background-size: contain;
 	width: 30px;
+	height: 30px;
 	border: none;
 	margin: 0;
 }
@@ -38,6 +40,7 @@ h3 {
 	background: url("images/playbutton.png") center no-repeat;
 	background-size: contain;
 	width: 30px;
+	height: 30px;
 	border: none;
 	margin: 0;
 }
@@ -66,9 +69,8 @@ img {
 .row {
 	display: flex;
 	justify-content: space-around;
-	margin-top: 2px;
 	color: #053880;
-	margin-bottom: 0;
+	height: 40px;
 }
 
 #startscreen {
@@ -95,10 +97,10 @@ img {
 button {
 	margin: 0 auto;
 	width: 300px;
-	height: 30px;
+	height: 40px;
 	border-radius: 5px;
 	font-family: 'Indie Flower', cursive;
-	font-size: 18px;
+	font-size: 20px;
 }
 
 #flex-column {
@@ -120,4 +122,5 @@ button:hover {
 
 .bold {
 	font-size: 28px;
+	color: #0e97b0;
 }
