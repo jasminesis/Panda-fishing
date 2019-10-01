@@ -28,5 +28,7 @@ DOM manipulation was added to the window to trigger the next screen if the playe
 # Unsolved Problems
 
 [ ] Controlling the green glass of the game with a 'Flappy Bird' style movement
+
 [ ] Making the fish move randomly
+
 [ ] Creating a leaderboard
