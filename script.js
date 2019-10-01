@@ -1,18 +1,19 @@
 console.log("moo");
 
-var success = document.getElementById('nicecatch');
-var triesLeft = document.getElementById('tries')
-var nextButton = document.getElementById('nextButton');
-var happyMusic = document.getElementById("happymusic");
+var nicecatchscr = document.getElementById("nicecatch");
 var startButton = document.getElementById('startButton');
 var splashSound = document.getElementById("splash");
-var nicecatchscr = document.getElementById("nicecatch");
 var startscreen = document.getElementById('startscreen');
+var nextButton = document.getElementById('nextButton');
 var whichLevel = document.getElementById('whichLevel');
+var happyMusic = document.getElementById("happymusic");
+var wrongBuzz = document.getElementById("clickwrong")
+var triesLeft = document.getElementById('tries')
 var playMusic = document.getElementById('playmusic');
 var muteMusic = document.getElementById('mutemusic')
 var gameover = document.getElementById('gameover');
 var failure = document.getElementById('gameover');
+var success = document.getElementById('nicecatch');
 var canvas = document.querySelector('canvas');
 var timer = document.getElementById('timer');
 
@@ -23,10 +24,20 @@ playMusic.addEventListener('click', pauseMusic);
 muteMusic.addEventListener('click', pauseMusic);
 nicecatchscr.addEventListener('click', nextLevel);
 
-window.addEventListener('keypress', detectCollision);
+window.addEventListener('keypress', function(event) {
+    if (event.code === 'Space') {
+    detectCollision()
+}});
+window.addEventListener('keypress', function(event) {
+    if (proceed === true && event.code === 'Enter') {
+        nextLevel();
+        proceed = false;
+    }
+})
 
 var c = canvas.getContext('2d');
 
+var proceed = false;
 var ingame = false;
 var mute = false;
 var stop = null;
@@ -117,18 +128,27 @@ function detectCollision() {
     if (ingame === true) {
     console.log("pressed");
     console.log(ingame);
-    clickCounter--;
-    triesLeft.textContent = clickCounter;
+
         if ((fishy - 18 > glassy - 30) && (fishy < glassy + 30)) {
             splashSound.play();
             ingame = false;
+            proceed = true;
             success.classList.replace('hidden', 'show');
             canvas.classList.replace('show', 'hidden');
             nextButton.classList.replace('hidden', 'show');
             clearInterval(stop);
-        } else if (clickCounter === 0) {
+        } else if (clickCounter === 1) {
+            wrongBuzz.play();
+            clickCounter--;
+            triesLeft.textContent = clickCounter;
+            triesLeft.style.color = 'red';
             gameIsOver();
-    }
+        } else {
+            wrongBuzz.play();
+            clickCounter--;
+            triesLeft.textContent = clickCounter;
+            triesLeft.style.color = 'red';
+        }
 }
 }
 
@@ -138,6 +158,7 @@ function nextLevel() {
     startTimer();
     level++;
     whichLevel.textContent = level;
+    triesLeft.style.color = 'black';
     clickCounter = 3;
     triesLeft.textContent = clickCounter;
     success.classList.replace('show', 'hidden');
@@ -165,6 +186,8 @@ function gameIsOver() {
     ingame = false;
     canvas.classList.replace('show', 'hidden');
     failure.classList.replace('hidden', 'show')
+    pauseMusic();
+    clearInterval(stop);
 }
 
 function start() {
@@ -212,5 +235,3 @@ function pauseMusic() {
     startMusic();
 }
 }
-
-startMusic();
