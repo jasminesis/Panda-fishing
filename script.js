@@ -6,10 +6,12 @@ var startButton = document.getElementById('startButton');
 var splashSound = document.getElementById("splash");
 var startscreen = document.getElementById('startscreen');
 var whichLevel = document.getElementById('whichLevel');
+var playmusic = document.getElementById('playmusic');
 var gameover = document.getElementById('gameover');
 var failure = document.getElementById('gameover');
 var canvas = document.querySelector('canvas');
 var timer = document.getElementById('timer');
+
 
 var c = canvas.getContext('2d');
 
@@ -129,13 +131,23 @@ function nextLevel() {
     canvas.classList.add('show');
     nextButton.classList.remove('show');
     nextButton.classList.add('hidden');
-    if (dglassy < 0) {
-        dglassy -= 2;
-    }
-    else {
-        dglassy += 2;
+// changing difficulty levels
+// if level is greater than 4, add only 1 to velocity
+    if (level >= 4) {
+        if (dglassy < 0) {
+            dglassy -= 1;
+        } else {
+            dglassy += 1;
+        }
+    } else {
+        if (dglassy < 0) {
+            dglassy -= 2;
+        } else {
+            dglassy += 2;
+        }
     }
 }
+
 
 function gameIsOver() {
     canvas.classList.remove('show');

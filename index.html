@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Display|Indie+Flower&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Panda goes fishing</title>
 </head>
 <body>
+
+    <!-- <audio src="happymusic.m4a" autoplay loop>Your browser does not support the<code>audio</code> element.</audio> -->
+
     <h1>Panda goes fishing!</h1>
     <div class="row">
         <h3>Level : <span id="whichLevel">1</span></h3>
         <h3>Timer : <span id="timer">10</span>s</h3>
-
+        <button id="playmusic"></button>
     </div>
 
     <div id="startscreen" class = "show">
         <img id="panda-image" src="images/panda-fishing.jpg">
         <div id="flex-column">
             <h2>Catch the fish by pressing any key when the fish is in the green glass.</br></br>
-            You get 10 seconds and </br>3 tries on each level!</br></br>
+            You get <span class="bold">10 seconds</span> and </br><span class="bold">3 tries</span> on each level!</br></br>
             Each level will get harder.</h2>
             <button id="startButton">Start fishing! 🎣</button>
         </div>

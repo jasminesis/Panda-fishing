@@ -20,6 +20,14 @@ h3 {
 	margin-top: 0;
 }
 
+#playmusic {
+background: url("images/mute.png") center no-repeat;
+	background-size: contain;
+	width: 30px;
+	border: none;
+	margin: 0;
+}
+
 img {
 	margin: 0 auto;
 	width: 700px;
@@ -94,6 +102,6 @@ button:hover {
 	100% { transform: translate(2px, 0); }
 }
 
-span {
-	font-size: 18px;
+.bold {
+	font-size: 28px;
 }
