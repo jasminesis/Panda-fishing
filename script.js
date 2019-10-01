@@ -6,6 +6,7 @@ var nextButton = document.getElementById('nextButton');
 var happyMusic = document.getElementById("happymusic");
 var startButton = document.getElementById('startButton');
 var splashSound = document.getElementById("splash");
+var nicecatchscr = document.getElementById("nicecatch");
 var startscreen = document.getElementById('startscreen');
 var whichLevel = document.getElementById('whichLevel');
 var playMusic = document.getElementById('playmusic');
@@ -15,15 +16,18 @@ var failure = document.getElementById('gameover');
 var canvas = document.querySelector('canvas');
 var timer = document.getElementById('timer');
 
-window.addEventListener('keypress', detectCollision);
 nextButton.addEventListener('click', nextLevel);
 startButton.addEventListener('click', start);
 gameover.addEventListener('click', reload);
 playMusic.addEventListener('click', pauseMusic);
 muteMusic.addEventListener('click', pauseMusic);
+nicecatchscr.addEventListener('click', nextLevel);
+
+window.addEventListener('keypress', detectCollision);
 
 var c = canvas.getContext('2d');
 
+var ingame = false;
 var mute = false;
 var stop = null;
 var level = 1;
@@ -74,9 +78,8 @@ c.fillRect(0, 0, 310, 400);
     fish.addEventListener('load', function() {
         c.drawImage(fish, 82, 370, 36, 33)
     })
-    fish.src = "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/tropical-fish-icon.png";
+    fish.src = "images/fish.png";
 
-startMusic();
 
 
 var fishy = 370;
@@ -111,22 +114,26 @@ animateFish();
 
 
 function detectCollision() {
+    if (ingame === true) {
     console.log("pressed");
+    console.log(ingame);
     clickCounter--;
     triesLeft.textContent = clickCounter;
-    if ((fishy - 18 > glassy - 30) && (fishy < glassy + 30)) {
-        splashSound.play();
-        success.classList.replace('hidden', 'show');
-        canvas.classList.replace('show', 'hidden');
-        nextButton.classList.replace('hidden', 'show');
-        clearInterval(stop);
+        if ((fishy - 18 > glassy - 30) && (fishy < glassy + 30)) {
+            splashSound.play();
+            ingame = false;
+            success.classList.replace('hidden', 'show');
+            canvas.classList.replace('show', 'hidden');
+            nextButton.classList.replace('hidden', 'show');
+            clearInterval(stop);
+        } else if (clickCounter === 0) {
+            gameIsOver();
     }
-    else if (clickCounter === 0) {
-        gameIsOver();
-    }
+}
 }
 
 function nextLevel() {
+    ingame = true;
     clearInterval(stop);
     startTimer();
     level++;
@@ -155,14 +162,17 @@ function nextLevel() {
 
 
 function gameIsOver() {
+    ingame = false;
     canvas.classList.replace('show', 'hidden');
     failure.classList.replace('hidden', 'show')
 }
 
 function start() {
     startTimer();
+    ingame = true;
     startscreen.classList.replace('show','hidden');
     canvas.classList.replace('hidden', 'show');
+    startMusic();
 }
 
 function reload() {
@@ -183,14 +193,14 @@ function startTimer() {
 }
 
 function startMusic() {
-    happymusic.play();
+    happyMusic.play();
     mute = false;
 }
 
 
 function pauseMusic() {
     if (mute === false) {
-    happymusic.pause();
+    happyMusic.pause();
     mute = true;
     muteMusic.classList.replace('hidden', 'show');
     playMusic.classList.replace('show', 'hidden');
@@ -202,3 +212,5 @@ function pauseMusic() {
     startMusic();
 }
 }
+
+startMusic();
