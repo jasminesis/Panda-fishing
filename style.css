@@ -1,6 +1,8 @@
 body {
 	font-family: 'Indie Flower', cursive;
 	text-align: center;
+	max-width: 700px;
+	margin: 0 auto;
 
 }
 
@@ -11,6 +13,9 @@ canvas {
 	margin: 0 auto;
 }
 
+h1 {
+	margin-bottom: 10px;
+}
 
 h2 {
 	margin-top: 0;
@@ -63,6 +68,7 @@ img {
 	justify-content: space-around;
 	margin-top: 2px;
 	color: #053880;
+	margin-bottom: 0;
 }
 
 #startscreen {
