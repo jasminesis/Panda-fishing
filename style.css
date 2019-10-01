@@ -21,7 +21,15 @@ h3 {
 }
 
 #playmusic {
-background: url("images/mute.png") center no-repeat;
+	background: url("images/mute.png") center no-repeat;
+	background-size: contain;
+	width: 30px;
+	border: none;
+	margin: 0;
+}
+
+#mutemusic {
+	background: url("images/playbutton.png") center no-repeat;
 	background-size: contain;
 	width: 30px;
 	border: none;

@@ -2,19 +2,28 @@ console.log("moo");
 
 var success = document.getElementById('nicecatch');
 var nextButton = document.getElementById('nextButton');
+var happyMusic = document.getElementById("happymusic");
 var startButton = document.getElementById('startButton');
 var splashSound = document.getElementById("splash");
 var startscreen = document.getElementById('startscreen');
 var whichLevel = document.getElementById('whichLevel');
-var playmusic = document.getElementById('playmusic');
+var playMusic = document.getElementById('playmusic');
+var muteMusic = document.getElementById('mutemusic')
 var gameover = document.getElementById('gameover');
 var failure = document.getElementById('gameover');
 var canvas = document.querySelector('canvas');
 var timer = document.getElementById('timer');
 
+window.addEventListener('keypress', detectCollision);
+nextButton.addEventListener('click', nextLevel);
+startButton.addEventListener('click', start);
+gameover.addEventListener('click', reload);
+playMusic.addEventListener('click', pauseMusic);
+muteMusic.addEventListener('click', pauseMusic);
 
 var c = canvas.getContext('2d');
 
+var mute = false;
 var stop = null;
 var level = 1;
 canvas.width = 700;
@@ -66,6 +75,8 @@ c.fillRect(0, 0, 310, 400);
     })
     fish.src = "http://icons.iconarchive.com/icons/martin-berube/flat-animal/256/tropical-fish-icon.png";
 
+startMusic();
+
 
 var fishy = 370;
 var dfishy = -1;
@@ -96,10 +107,7 @@ function animateFish() {
 }
 animateFish();
 
-window.addEventListener('keypress', detectCollision);
-nextButton.addEventListener('click', nextLevel)
-startButton.addEventListener('click', start)
-gameover.addEventListener('click', reload)
+
 
 function detectCollision() {
     console.log("pressed");
@@ -179,4 +187,29 @@ function startTimer() {
             gameIsOver();
     }
     }, 1000)
+}
+
+function startMusic() {
+    happymusic.play();
+    mute = false;
+}
+
+
+function pauseMusic() {
+    if (mute === false) {
+    happymusic.pause();
+    mute = true;
+    muteMusic.classList.remove('hidden');
+    muteMusic.classList.add('show');
+    playMusic.classList.remove('show');
+    playMusic.classList.add('hidden');
+    console.log("music paused")
+} else if (mute === true) {
+    console.log("music playing")
+    muteMusic.classList.remove('show');
+    muteMusic.classList.add('hidden');
+    playMusic.classList.remove('hidden');
+    playMusic.classList.add('show');
+    startMusic();
+}
 }

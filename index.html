@@ -9,13 +9,12 @@
 </head>
 <body>
 
-    <!-- <audio src="happymusic.m4a" autoplay loop>Your browser does not support the<code>audio</code> element.</audio> -->
-
     <h1>Panda goes fishing!</h1>
     <div class="row">
         <h3>Level : <span id="whichLevel">1</span></h3>
         <h3>Timer : <span id="timer">10</span>s</h3>
-        <button id="playmusic"></button>
+        <button id="playmusic" class="show"></button>
+        <button id="mutemusic" class="hidden"></button>
     </div>
 
     <div id="startscreen" class = "show">
@@ -40,6 +39,10 @@
 
 <audio id = "splash">
     <source src = "splash.mp3" type="audio/mpeg">
+</audio>
+
+<audio id = "happymusic">
+    <source src = "happymusic.m4a" type="audio/mpeg">
 </audio>
 
 
