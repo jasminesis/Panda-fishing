@@ -1,6 +1,7 @@
 console.log("moo");
 
 var success = document.getElementById('nicecatch');
+var triesLeft = document.getElementById('tries')
 var nextButton = document.getElementById('nextButton');
 var happyMusic = document.getElementById("happymusic");
 var startButton = document.getElementById('startButton');
@@ -29,7 +30,7 @@ var level = 1;
 canvas.width = 700;
 var timeLeft = 10;
 canvas.height = 400;
-var clickCounter = 0;
+var clickCounter = 3;
 
 var grd = c.createLinearGradient(0, 0, 310, 400);
 grd.addColorStop(0, 'white');
@@ -111,18 +112,16 @@ animateFish();
 
 function detectCollision() {
     console.log("pressed");
-    clickCounter++;
+    clickCounter--;
+    triesLeft.textContent = clickCounter;
     if ((fishy - 18 > glassy - 30) && (fishy < glassy + 30)) {
         splashSound.play();
-        success.classList.remove('hidden');
-        success.classList.add('show');
-        canvas.classList.remove('show');
-        canvas.classList.add('hidden');
-        nextButton.classList.remove('hidden');
-        nextButton.classList.add('show');
+        success.classList.replace('hidden', 'show');
+        canvas.classList.replace('show', 'hidden');
+        nextButton.classList.replace('hidden', 'show');
         clearInterval(stop);
     }
-    else if (clickCounter === 3) {
+    else if (clickCounter === 0) {
         gameIsOver();
     }
 }
@@ -132,13 +131,11 @@ function nextLevel() {
     startTimer();
     level++;
     whichLevel.textContent = level;
-    clickCounter = 0;
-    success.classList.remove('show');
-    success.classList.add('hidden');
-    canvas.classList.remove('hidden');
-    canvas.classList.add('show');
-    nextButton.classList.remove('show');
-    nextButton.classList.add('hidden');
+    clickCounter = 3;
+    triesLeft.textContent = clickCounter;
+    success.classList.replace('show', 'hidden');
+    canvas.classList.replace('hidden', 'show');
+    nextButton.classList.replace('show', 'hidden');
 // changing difficulty levels
 // if level is greater than 4, add only 1 to velocity
     if (level >= 4) {
@@ -158,18 +155,14 @@ function nextLevel() {
 
 
 function gameIsOver() {
-    canvas.classList.remove('show');
-    canvas.classList.add('hidden');
-    failure.classList.remove('hidden');
-    failure.classList.add('show');
+    canvas.classList.replace('show', 'hidden');
+    failure.classList.replace('hidden', 'show')
 }
 
 function start() {
     startTimer();
-    startscreen.classList.remove('show');
-    startscreen.classList.add('hidden');
-    canvas.classList.remove('hidden');
-    canvas.classList.add('show');
+    startscreen.classList.replace('show','hidden');
+    canvas.classList.replace('hidden', 'show');
 }
 
 function reload() {
@@ -199,17 +192,13 @@ function pauseMusic() {
     if (mute === false) {
     happymusic.pause();
     mute = true;
-    muteMusic.classList.remove('hidden');
-    muteMusic.classList.add('show');
-    playMusic.classList.remove('show');
-    playMusic.classList.add('hidden');
+    muteMusic.classList.replace('hidden', 'show');
+    playMusic.classList.replace('show', 'hidden');
     console.log("music paused")
 } else if (mute === true) {
     console.log("music playing")
-    muteMusic.classList.remove('show');
-    muteMusic.classList.add('hidden');
-    playMusic.classList.remove('hidden');
-    playMusic.classList.add('show');
+    muteMusic.classList.replace('show', 'hidden');
+    playMusic.classList.replace('hidden', 'show');
     startMusic();
 }
 }
