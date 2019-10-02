@@ -124,3 +124,12 @@ button:hover {
 	font-size: 28px;
 	color: #0e97b0;
 }
+
+p {
+	display: inline;
+	font-size: 26px;
+}
+
+p.show {
+	display: inline;
+}

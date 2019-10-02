@@ -16,6 +16,8 @@ var failure = document.getElementById('gameover');
 var success = document.getElementById('nicecatch');
 var canvas = document.querySelector('canvas');
 var timer = document.getElementById('timer');
+var levelID = document.getElementById('level');
+var endingLevel = document.querySelector('p');
 
 nextButton.addEventListener('click', nextLevel);
 startButton.addEventListener('click', start);
@@ -188,6 +190,10 @@ function gameIsOver() {
     failure.classList.replace('hidden', 'show')
     pauseMusic();
     clearInterval(stop);
+    endingLevel.classList.replace('hidden', 'show');
+    levelID.classList.replace('hidden', 'show');
+    levelID.textContent = level + ' ! Congratulations!';
+
 }
 
 function start() {
